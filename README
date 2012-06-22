@@ -1,0 +1,127 @@
+How to compile
+=== == =======
+
+Just type "make" in the directory extracted.
+
+changelogs (noweberdb)
+==========
+
+changelog-0.1
+-------------
+
+Comments:
+    Basically, noweberdb-0.1 is a neanderdb-0.3.2 with the changes below.
+
+o bug fixes in print() function of debugger.c
+
+o hex support only
+
+    Now, all information an user interact is a hex number, expect that "print"
+  command shows decimal information too, just as hex and bin. Since an user or
+  developer rarely interact with decimal numbers programming a computer at low
+  level, I thought it is useless to noweberdb do so.
+
+(!)===(!)===(!)===(!)===(!)===(!)===(!)===(!)===(!)===(!)===(!)===(!)===(!)
+
+changelogs (OLD (!) information related to neanderdb)
+==========
+
+changelog-0.3.2
+---------------
+
+o bug fix
+
+    It was crashing if command line was empty (just an '\n' stop the program)
+
+o changed some structures in neander.c
+
+changelog-0.3.1
+---------------
+
+Comments:
+    Little modification to make things the right way, not to just work.
+
+o abbreviated commands are now supported
+
+    For example, to print the contens of AC (accumulator), you can type a
+  single letter command (shorter form) to do the same as the longer form. An
+  example:
+
+  neanderdb> print ac
+
+  or just the shorter form
+
+  neanderdb> p ac
+
+o now it's using the tokenizer available with libedit
+
+    Using the tokenizer functions of this library make the code easy to read,
+  it's more flexible and eliminates a warning gcc 3.3.3 was giving in the
+  previous release.
+
+changelog-0.3
+-------------
+
+Comment:
+    I'm not following up to strictly the list of expected changes and I don't 
+  know why I wrote in the previous README since I never implement the feature
+  in the respective release. But for sure it will be there until version 1.0.
+
+o neanderdb now supports command line arguments
+
+    Now it's even faster the speed an user can interact with debugger. As an
+  example, to modify AC (accumulator), just type in console:
+
+  neanderdb> edit ac 7
+
+  This will put the value 7 in accumulator.
+
+  Some more details can be found typing "help" in console.
+
+o a lot of bug fixes
+
+    Most of bug fixes are regarding the memory limits and user interaction with
+  console. Some clean up in the code, too.
+
+o changed "show" command to "print", equal to gdb
+
+o changed Neander information message
+
+o (some english errors of this file corrected)
+
+changelog-0.2
+-------------
+
+o neanderdb now supports libedit
+
+    This feature wasn't expected, but I thought this was essencial to enhance
+  the speed an user interact with debugger. Since I had a lot of work to put
+  this up, I've made a release before reach all the features I wanted for 0.2.
+
+    Now it's possible to use the commands normally found in emacs mode to edit
+  a command, like Ctrl-a ou Home to go to the beginning of the line, Ctrl-e to
+  go to the end of the line, Ctrl-l to clear the screen, Alt-f move forward a 
+  word, Alt-b move backward a word, etc. Just to name a few. Also, history
+  functions was added to make it easier to retrieve commands already typed.
+
+o "clean" target was added to Makefile, simple
+
+o few changes (not bug fixes) to make things "right"
+
+changelog-0.1
+-------------
+
+o files were divided in a more organizated approach (but I still think some
+  filenames could be changed, maybe in version 0.2)
+  o debugger.h do not run the instructions anymore
+  o all instructions are under neander.c
+  o debugger.c contains main(), since is in debugger where all interaction
+    with the emulated computer are made
+
+o Makefile was added to make easy to do modifications in the source code, 
+  since the number of files are growing up due to modularization (but need to
+  change because this Makefile do not catch changes in .h files)
+
+o flags N and Z (negative and zero) are now working
+
+o removed NetBSD binary from distribution
